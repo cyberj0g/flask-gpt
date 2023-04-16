@@ -12,7 +12,7 @@ Minimalistic toolkit for prototyping GPT-based Python applications with followin
 * Easily customizable GPT contexts and prompts on the Python side
 
 # Setup
-```
+```bash
 pip install -r requirements
 export API_KEY=your_openai_api_key
 python app.py
@@ -26,8 +26,25 @@ python app.py
 # Customization
 
 * To customize chat modes, modify the `gpt_contexts` dictionary in the `config.py` file.
+  ```python
+  gpt_contexts = {
+    'assistant': [
+      {"role": "system", "content": "You are an assistant."},
+      {"role": "user", "content": "You are an assistant. Limit all responses to 3 sentences max."},
+    ],
+    'sales_manager': [
+      {"role": "user", "content": "You are a pushy sales manager from a company selling bananas. Try to sell me your product. Limit all responses to 3 sentences max."}
+    ]
+  }
+  ```
 * To additionally transform user inputs and ChatGPT outputs, edit `preprocess_user_input` and `postprocess_ai_response` functions in `app.py`
+  ```python
+  def postprocess_ai_response(response):
+    return response['choices'][0]['message']['content']
 
+  def preprocess_user_input(data):
+    return data
+  ```
 # Notes
 1. Speech recognition and synthesis works only in Google Chrome (both mobile and desktop)
 2. The server uses self-signed SSL/TLS certificate, so you need to get through the browser warning. It's required for API calls and speech services to work in mobile Chrome.
