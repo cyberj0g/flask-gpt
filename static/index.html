@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask GPT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Talk to AI</h1>
+    <div id="control-bar">
+        <label class="switch-container">
+            <span>Speech:</span>
+            <label class="switch">
+                <input type="checkbox" id="toggle-speech">
+                <span class="slider"></span>
+            </label>
+        </label>
+        <label>
+            Speech language:
+            <select id="language">
+                <option value="en-US">English</option>
+                <option value="ru-RU">Russian</option>
+            </select>
+        </label>
+        <div>
+            <label class="switch-container">
+                <span>Bot initiates chat:</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-bot-initiate" checked>
+                    <span class="slider"></span>
+                </label>
+            </label>
+            <label>
+                Bot mode:
+                <select id="mode">
+                </select>
+            </label>
+        </div>
+        <div>
+            <button id="startBtn">Start</button>
+        </div>
+    </div>
+    <div id="status-container" style="display: none">
+        <div id="status"><span role="img" aria-label="microphone">Speak now 🎙︎</span>
+        </div>
+    </div>
+    <div id="chat">Press start. Chat will appear here.</div>
+    <div id="input-container">
+        <input type="text" id="text-input" placeholder="Type your message">
+        <button id="send-button">Send</button>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
